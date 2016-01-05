@@ -1,0 +1,21 @@
+<!doctype html>
+{% load staticfiles %}
+<html>
+<head>
+<meta charset=utf-8>
+<link rel=stylesheet href={% static 'main/css/main.css' %}>
+<body>
+<p><strong>請註冊會員</strong></p>
+<form method=post action={% url 'account:register' %}> 
+	{% csrf_token %}
+	{{ userForm.as_p }}
+	{{ userProfileForm.as_p }}
+	<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type=submit value=送出>
+</form>
+<br>
+<p><a href={% url 'main:main' %}>回首頁</a></p>
+</html>
+</head>
+</body>
+	

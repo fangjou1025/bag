@@ -1,0 +1,52 @@
+<!doctype html>
+{% load staticfiles %}
+<html>
+<head>
+<title>程式語言小百科</title>
+<meta charset=utf-8>
+<link rel=stylesheet href="{% static 'main/css/main.css' %}">
+</head>
+<body>
+
+{% if category %}
+ 	<h1>{{category.name}}</h1>
+	 {% if pages %}
+		 <table>
+ 			<tr><th>網頁標題</th></tr>
+			 {% for page in pages %}
+ 				<tr>
+					 <td>
+						 <a href={{page.url}}>{{page.title}}</a>
+					 </td>
+					 {% if user.is_authenticated %}
+					 <td>
+ 						<form action={% url 'wiki:updatePage' page.id %}>
+ 							<input type=submit value=修改>
+						</form>
+						{% endif %}
+					 </td>
+					 <td>
+					 	{% if user.is_authenticated %}
+						 <form method=post action={% url 'wiki:deletePage' page.id %}>
+							 {% csrf_token %}
+							 <input type=submit value=刪除>
+ 						</form>
+ 						{% endif %}
+ 					</td> 
+ 				</tr>
+ 			{% endfor %}
+	 </table>
+	 {% else %}
+	 <p><strong>此分類目前並無網頁。</strong></p>
+	 {% endif %}
+	 <br>
+	 {% if user.is_authenticated %}
+	 <p><a href={% url 'wiki:addPage' category.id %}>新增網頁</a></p>
+	 {% endif %} 
+{% else %}
+ <p>所指定的分類「{{categoryID}}」不存在。</p>
+ {% endif %}
+<p><a href={% url 'wiki:wiki' %}>回 Wiki 網頁</a></p>
+
+</body>
+</html>

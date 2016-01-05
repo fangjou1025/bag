@@ -1,0 +1,22 @@
+<!doctype html>
+{% load staticfiles %}
+<html>
+<head>
+<title>Special bags</title>
+<meta charset=utf-8>
+<link rel=stylesheet href={% static 'main/css/main.css' %}>
+</head>
+<body>
+
+<h1>新增商品</h1>
+<form method=post action={% url 'wiki:addCategory' %}>
+	{% csrf_token %}
+	{{form.as_p}}
+ 	<input type=submit value=送出>
+ </form>
+<br>
+<br>
+<p><a href={% url 'wiki:wiki' %}>淑女包款</a></p>
+<p><a href={% url 'main:main' %}>回首頁</a></p>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!doctype html>
+{% load staticfiles %}
+<html>
+<head>
+<!-- 一再撰寫相同的 HTML 標頭資料，有沒有人開始覺得很煩了？？ -->
+<title>程式語言小百科</title>
+<meta charset=utf-8>
+<link rel=stylesheet href={% static 'main/css/main.css' %}>
+</head>
+<body>
+
+<h1>修改網頁</h1>
+<form method=post action={% url 'wiki:updatePage' page.id %}>
+ {% csrf_token %}
+ {{form.as_p}}
+ <input type=submit value=送出>
+</form>
+<br>
+<p><a href={% url 'wiki:category' page.category.id %}>回「{{page.category.name}}」網頁
+</a></p>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+會員登入
+<!doctype html>
+{% load staticfiles %}
+<html>
+<head>
+<meta charset=utf-8>
+<link rel=stylesheet href={% static 'main/css/main.css' %}>
+<body>
+
+{% if error %}
+	<p class=error>{{error}}</p>
+{% endif %}
+<form method=post action={% url 'account:userLogin' %}>
+	{% csrf_token %}
+	 <br>
+	 會員名稱：<input type=text name=username><br>
+	 <br>
+	 密碼：<input type=password name=password><br>
+	 <br>
+ 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type=submit value=送出>
+</form>
+<br>
+<p><a href={% url 'main:main' %}>回首頁</a></p>

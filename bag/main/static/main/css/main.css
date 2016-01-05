@@ -1,0 +1,30 @@
+body {
+ margin: 0;
+ padding: 0;
+ width: 100%;
+ background-color: #d0fae7;
+}
+
+#mune{
+	width:50%;
+	margin:0 auto;
+}
+ul {
+ margin:0;
+ padding: 0;
+}
+li {
+ list-style: none;
+ width: 10%;
+ min-width: 200px;
+ float: left;
+}
+
+.success {
+	color: blue;
+}
+
+.error {
+	 color: red;
+}
+	
